@@ -1,0 +1,26 @@
+{% extends 'base2.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <h2>お知らせ</h2>
+    <ul class="list-group">
+    {% for notification in notifications %}
+        {% if notification.created_at %}
+            <li class="list-group-item">
+                <div class="notification_message">{{ notification.message }}</div>
+                <div class="notification_created_at">{{ notification.created_at|date:"Y年m月d日 H:i" }}</div>
+            </li>
+        {% else %}
+            <li class="list-group-item">
+                <div class="notification_message">{{ notification.message }}</div>
+                <div class="notification_created_at">{{ notification.created_at|date:"Y年m月d日 H:i" }}</div>
+            </li>
+        {% endif %}
+    {% empty %}
+    <li class="list-group-item">お知らせはありません。</li>
+    {% endfor %}
+    </ul>
+</div>
+{% endblock content %}
+

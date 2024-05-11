@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <title>Book at me</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+        <link rel="stylesheet" href="{% static "/css/style.css" %}">
+    </head>
+    <body class="body">
+        <header>
+            <div class="header">
+                <h2 class="mypage_title">Book at me!!</h2>
+                <nav>
+                    <ul class="mypage_nav">
+                        <li><a href="{% url 'accounts:mypage' %}">ホーム</a></li>
+                        <li><a href="{% url 'accounts:mypost' %}">本一覧</a></li>
+                        <li><a href="{% url 'accounts:book_count' %}">ペース確認</a></li>
+                        <li><a href="{% url 'accounts:friendpost' %}">みんなの投稿</a></li>
+                        <li><a href="{% url 'accounts:follow-list' %}">友達の投稿</a></li>
+                        <li><a href="{% url 'accounts:edit_profile' %}">マイプロフィール</a></li>
+                        <li><a href="{% url 'accounts:notice' %}">お知らせ</a></li>
+                        <li><a href="{% url 'accounts:user_logout' %}">ログアウト</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        {% block content %}{% endblock %}
+    </body>
+</html>
+
+{% comment %} ユーザー：鈴木　花子
+パスワード：hasuzu123
+
+ユーザー：山田　太郎
+パスワード：tayama123
+
+ユーザー：嘉喜　はるか
+パスワード：hakaki123
+
+ユーザー：佐藤　次郎
+パスワード：sajiro123 {% endcomment %}
+
+

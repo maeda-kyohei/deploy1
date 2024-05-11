@@ -1,0 +1,77 @@
+{% extends 'base2.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+    <div class="alert alert-success" role="alert">
+        <div class="book_detail">
+            <div class="title_username_content">
+                <p>タイトル：{{object.title}}</p>
+                <p>完読日：{{object.date|date:"Y-m-d"}}</p>
+                <p>投稿者：{{object.user.username}}</p>
+                <p>コメント：{{object.content}}</p>
+            </div>
+            <div class="book_img">
+            {% if object.image %}
+                <img src="{{ object.image.url }}">
+            {% else %}
+                <img src="{% static 'No_image.png' %}">
+            {% endif %}
+            </div>
+        </div>
+
+        <div class="btns">
+            {% if object.user == request.user %}
+            <a href="{% url 'accounts:update' object.pk %}" class="btn btn-primary ms-3" tabindex="-1" role="button" aria-disabled="true">編集</a>
+            <a href="{% url 'accounts:delete' object.pk %}" class="btn btn-danger ms-3" tabindex="-1" role="button" aria-disabled="true">削除</a>
+            {% endif %}
+            {% if request.user in object.like.all %}
+            <a href="{% url 'accounts:like-detail' object.pk %}" class="like-btn add-color" tabindex="-1" role="button" aria-disabled="true"><i class="fas fa-heart"></i></a>{{object.like.count}}
+            {% else %}
+            <a href="{% url 'accounts:like-detail' object.pk %}" class="like-btn" tabindex="-1" role="button" aria-disabled="true"><i class="far fa-heart"></i></a>{{object.like.count}}
+            {% endif %}
+            {% if object.user != request.user %}
+                {% if object.user in connection.0.following.all %}
+                <a href="{% url 'accounts:follow-detail' object.pk %}" class="btn btn-danger ms-3" tabindex="-1" role="button" aria-disabled="true">フォロー解除</a>
+                {% else %}
+                <a href="{% url 'accounts:follow-detail' object.pk %}" class="btn btn-primary ms-3" tabindex="-1" role="button" aria-disabled="true">フォロー</a>
+                {% endif %}
+            {% else %}
+            {% endif %}
+
+            {% if object.user == request.user %}
+                {% if object.pinned %}
+                <a href="{% url 'accounts:unpin-post' object.pk %}" class="btn btn-warning ms-3" tabindex="-1" role="button" aria-disabled="true">ピン止め解除</a>
+                {% else %}
+                <a href="{% url 'accounts:pin-post' object.pk %}" class="btn btn-info ms-3" tabindex="-1" role="button" aria-disabled="true">ピン止め</a>
+                {% endif %}
+            {% else %}
+            {% endif %}
+            {% if object.user != request.user %}
+                <form method="post" action="{% url 'accounts:comment' object.pk %}">
+                    {% csrf_token %}
+                    {{ comment_form.as_p }}
+                    <button type="submit" class="btn btn-primary">コメントする</button>
+                </form>
+            {% else %}
+            {% endif %}
+        </div>
+    </div>
+    
+
+    <!-- コメント一覧 -->
+    <div class="comments">
+        <h3>コメント一覧</h3>
+        {% for comment in object.comments.all %}
+            <div class="comment">
+                <div class="comment-time">
+                    <p class="comment-username">{{ comment.user.username }}</p>
+                    <div class="comment_created_at">{{ comment.created_at|date:"Y年m月d日 H:i" }}</div>
+                </div>
+                <p>{{ comment.content }}</p>
+            </div>
+        {% empty %}
+            <p>コメントはありません。</p>
+        {% endfor %}
+    {% endblock content %}
+</div>
+</div>

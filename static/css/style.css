@@ -1,0 +1,213 @@
+
+img {
+    width: 100%;
+}
+
+.photo-form {
+    display: flex;
+    justify-content: center;
+}
+
+.photo {
+    width: 600px;
+    position: relative;
+}
+
+.photo::after{
+    position: absolute;
+    content: '';
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    box-shadow: inset 0 0 10px 15px #FFF;
+}
+
+.title {
+    margin-top: 50px;
+}
+
+.title h2 {
+    padding-top: 50px;
+    font-size: 24px;
+    text-align: center;
+    
+}
+
+.mypage_title {
+    font-size: 24px;
+    color: #FFF;
+    padding-left: 25px;
+    padding-top: 20px;
+}
+
+h1 {
+    font-size: 58px;
+    text-align: center;
+    color: orange;
+}
+
+.mypage_nav {
+    margin-top: 50px;
+    list-style: none;
+}
+
+.mypage_nav li {
+    padding-bottom: 30px;
+}
+
+.mypage_nav li a {
+    color: #FFF;
+}
+
+.body {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+header {
+    background-color: orange;
+    width: 15%;
+    min-height: 100vh;
+}
+
+.header {
+    position: sticky;
+    top: 20px;
+}
+
+.mypage_p {
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+.mybook_book_regist_btn {
+    margin-top: 100px;
+}
+
+.book_regist_btn {
+    color: white;
+    background-color: orangered;
+    border-radius: 100vh;
+    padding: 40px 200px 40px 200px;
+}
+
+.book_regist_btn:hover {
+    color: orangered;
+    background: white;
+    border: 1px solid orangered;
+}
+
+.content-wrapper {
+    width: 30%;
+}
+
+.card {
+    margin-top: 50px;
+}
+
+.bookpost_form {
+    margin-top: 50px;
+    margin-left: 50px;
+}
+
+.book_detail {
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+.alert {
+    padding-left: 3%;
+    padding-right: 3%;
+}
+
+.book_img {
+    width: 300px;
+}
+
+.mypost {
+    display: flex;
+    justify-content: space-between;
+}
+
+.mypost_book_img {
+    width: 100px;
+}
+
+.pin_book {
+    width: 300px;
+    margin: 0 auto;
+}
+
+.mypage {
+    margin-top: 100px;
+}
+
+.mypage h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.friendpost {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.mypage p {
+    margin-top: 200px;
+    margin-bottom: 200px;
+    text-align: center;
+}
+
+.container {
+    margin-top: 50px;
+}
+
+.table {
+    margin-top: 50px;
+}
+
+
+.table h1 {
+    font-size: 30px;
+    color: black;
+}
+
+.table-img {
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+
+.list-group-item {
+    display: flex;
+    justify-content: space-between;
+}
+
+.btns {
+    display: flex;
+}
+
+.btns a:nth-child(2){
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.comment {
+    background-color:lightsteelblue;
+    padding-left: 3%;
+    padding-right: 3%;
+    border-radius: 10px;
+}
+
+.comment-time {
+    display: flex;
+    justify-content: space-between;
+}
+
+.comment-username {
+    font-weight: bolder;
+}

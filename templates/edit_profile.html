@@ -1,0 +1,25 @@
+{% extends 'base2.html' %}
+{% block content %}
+    <div class="content-wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12 offset-lg-3">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4><b>プロフィール</b></h4>
+                        </div>
+                        <div class="card-body">
+                            {# 画像ファイルをアップロードするためenctype="multipart/form-data"を指定#}
+                            <form action="{% url 'accounts:edit_profile' %}" method="post" 
+                                enctype="multipart/form-data">
+                                {% csrf_token %}
+                                {{ form.as_p }}
+                                <button class='btn btn-outline-success btn-block' type="submit">更新</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

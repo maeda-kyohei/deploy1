@@ -1,0 +1,10 @@
+{% extends 'base2.html' %}
+{% load static %}
+{% block content %}
+<div class="bookpost_form">
+    <form method="post" class="post-form" enctype="multipart/form-data">{% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="投稿">
+    </form>
+</div>
+{% endblock content %}

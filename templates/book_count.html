@@ -1,0 +1,20 @@
+{% extends 'base2.html' %}
+{% load static %}
+{% block content %}
+    <div class="table">
+        <h1>完読数(月)</h1>
+        {% if error_message %}
+            <p>{{ error_message }}</p>
+        {% endif %}
+        <form method="get" action="">
+            <label for="start_date">開始月:</label>
+            <input type="month" id="start_date" name="start_date" value="{{ request.GET.start_date|default_if_none:'' }}" required>
+            <label for="end_date">終了月:</label>
+            <input type="month" id="end_date" name="end_date" value="{{ request.GET.end_date|default_if_none:'' }}" required>
+            <button type="submit">選択</button>
+        </form>
+        <div class="table-img">
+            <img src="data:image/png;base64,{{ chart| safe }}">
+        </div>
+    </div>
+{% endblock content %}

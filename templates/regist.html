@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<div class="title">
+   <h2>読んだ本シェアしよう!!</h2>
+   <h1>Book at Me!!</h1>
+</div>
+<div class="photo-form">
+   <div class="photo">
+      <img src="{% static 'reading.jpg' %}">
+   </div>
+   <div>
+   <form method="POST">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <input type="submit" value="ユーザ登録">
+   </form>
+   <a class="navbar-brand" href="{% url 'accounts:user_login' %}">戻る</a>
+   </div>
+</div>
+{% endblock %}

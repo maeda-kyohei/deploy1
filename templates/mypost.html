@@ -1,0 +1,27 @@
+{% extends 'base2.html' %}
+{% load static %}
+{% block content %}
+<div class="container mt-3">
+    {% if object_list %}
+        {% for item in object_list %}
+        <div class="alert alert-success mypost" role="alert">
+            <div class="content">
+                <p>タイトル：<a href="{% url 'accounts:detail' item.pk %}">{{item.title}}</a></p>
+                <p>投稿者：{{item.user.username}}</p>
+            </div>
+            <div class="mypost_book_img">
+            {% if item.image %}
+                <img src="{{ item.image.url }}">
+            {% else %}
+                <img src="{% static 'No_image.png' %}">
+            {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+    {% else %}
+        <div class="alert alert-info" role="alert">
+            投稿がありません
+        </div>
+    {% endif %}
+</div>
+{% endblock content %}

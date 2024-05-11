@@ -1,0 +1,29 @@
+{% extends 'base2.html' %}
+{% block content %}
+{% load static %}
+<div class="mypage_p">
+    <p>{{ user.username }}  さん、おかえりなさい</p>
+</div>
+<div class="mypage">
+    <h2>～私の一冊～</h2>
+    {% if pinned_post %}
+        {% if pinned_post.user == request.user %}
+        <div class="pin_book">
+            {% if pinned_post.image %}
+                <img src="{{ pinned_post.image.url }}">
+            {% else %}
+                <img src="{% static 'No_image.png' %}">
+            {% endif %}
+        </div>
+        {% else %}
+            <p>※ピン止めされた投稿の画像が表示されます</p>
+        {% endif %}
+    {% else %}
+        <p>※ピン止めされた投稿の画像が表示されます</p>
+    {% endif %}
+    
+    <div class="mybook_book_regist_btn">
+        <a href="{% url 'accounts:create' %}" class="book_regist_btn">本を登録する！</a>
+    </div>
+</div>
+{% endblock %}
